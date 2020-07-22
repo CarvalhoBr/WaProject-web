@@ -7,6 +7,7 @@ import React, { memo, useCallback, useRef, useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import DashboardIndexPage from './Dashboard';
+import Request from './Requests';
 import SamplePage from './Sample';
 import UserIndexPage from './Users';
 
@@ -43,7 +44,8 @@ const AdminPage = memo((props: {}) => {
       // role: enRoles.admin,
       icon: AccountMultipleIcon
     },
-    { path: '/exemplos', display: 'Exemplos', icon: StarIcon }
+    { path: '/exemplos', display: 'Exemplos', icon: StarIcon },
+    { path: '/pedido', display: 'Pedidos', icon: StarIcon }
   ]);
 
   const scrollTop = useCallback(() => setTimeout(() => mainContent.current.scrollTo(0, 0), 100), []);
@@ -57,6 +59,7 @@ const AdminPage = memo((props: {}) => {
             <Switch>
               <Route path='/exemplos' component={SamplePage} />
               <Route path='/usuarios' component={UserIndexPage} />
+              <Route path='/pedido' component={Request} />
               <Route path='/' component={DashboardIndexPage} />
               <Route render={renderRedirect} />
             </Switch>
